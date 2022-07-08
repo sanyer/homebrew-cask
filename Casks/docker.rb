@@ -27,6 +27,7 @@ cask "docker" do
     docker-completion
     docker-compose
     docker-compose-completion
+    docker-credential-helper
     docker-credential-helper-ecr
     hyperkit
     kubernetes-cli
