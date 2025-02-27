@@ -1,6 +1,6 @@
 cask "cog" do
-  version "2989,53291b570"
-  sha256 "8f832d64a12db9bc748f817109b1917d54821f7e2ba1221e5cf924326f33a5b3"
+  version "3002,631e8a2c2"
+  sha256 "c1381c002b801efebc45f7877807f1e15cda5f683eccd2b503721eec596307b6"
 
   url "https://cogcdn.cog.losno.co/Cog-#{version.csv.second}.zip"
   name "Cog"
