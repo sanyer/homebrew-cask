@@ -1,9 +1,9 @@
 cask "google-cloud-sdk" do
   arch arm: "arm", intel: "x86_64"
 
-  version "519.0.0"
-  sha256 arm:   "87de08c9ce0f80c9629fdf8e4f5b9c0167163839ea7d2931f43e7620552c5f8d",
-         intel: "d82be07ed38fc0494c356dc8331e13bf18e539bf0ea42db7334b404c515d24a7"
+  version "521.0.0"
+  sha256 arm:   "946d5baefb8d392fde888057d976da4ae57cb375ba9963007e50661341b81bfc",
+         intel: "ead62a14461824dab1ace968abaa525fafe30d58bb7c0b348c00e28ed37176fc"
 
   url "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-#{version}-darwin-#{arch}.tar.gz"
   name "Google Cloud SDK"
@@ -16,7 +16,7 @@ cask "google-cloud-sdk" do
   end
 
   auto_updates true
-  depends_on formula: "python@3.11"
+  depends_on formula: "python@3.12"
 
   google_cloud_sdk_root = "#{HOMEBREW_PREFIX}/share/google-cloud-sdk"
 
