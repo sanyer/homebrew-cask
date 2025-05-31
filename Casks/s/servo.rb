@@ -1,6 +1,6 @@
 cask "servo" do
-  version "2025-04-25"
-  sha256 "d3cf74e801c8f16ff80e47856b6bd853861f5183820769ca691cd7d3bf146411"
+  version "2025-05-31"
+  sha256 "d918c8abd0bd33830576a7dde4f739a0b08aa039238458681fac5865cb61657c"
 
   url "https://github.com/servo/servo-nightly-builds/releases/download/#{version}/servo-latest.dmg",
       verified: "github.com/servo/servo-nightly-builds/"
@@ -11,6 +11,8 @@ cask "servo" do
   depends_on macos: ">= :ventura"
 
   app "Servo.app"
+
+  zap trash: "~/Library/Application Support/Servo"
 
   caveats do
     requires_rosetta
