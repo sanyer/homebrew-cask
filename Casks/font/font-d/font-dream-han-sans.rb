@@ -6,11 +6,13 @@ cask "font-dream-han-sans" do
   name "Dream Han Sans"
   homepage "https://github.com/Pal3love/dream-han-cjk/"
 
+  no_autobump! because: :requires_manual_review
+
   livecheck do
-    url "https://github.com/Pal3love/dream-han-cjk/releases/latest"
-    regex(/dream[._-]v?(\d+(?:\.\d+)+)[._-]sans[._-]v?(\d+(?:\.\d+)+)[._-]serif[._-]v?(\d+(?:\.\d+)+)/i)
-    strategy :header_match do |headers, regex|
-      match = headers["location"]&.match(regex)
+    url :url
+    regex(/^dream[._-]v?(\d+(?:\.\d+)+)[._-]sans[._-]v?(\d+(?:\.\d+)+)[._-]serif[._-]v?(\d+(?:\.\d+)+)$/i)
+    strategy :github_latest do |json, regex|
+      match = json["tag_name"]&.match(regex)
       next if match.blank?
 
       "#{match[1]},#{match[2]},#{match[3]}"
