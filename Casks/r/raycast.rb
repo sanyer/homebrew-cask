@@ -20,9 +20,9 @@ cask "raycast" do
     end
   end
   on_ventura :or_newer do
-    version "1.96.1"
-    sha256 arm:   "5de69e9a6dc78eda260967b85b78ec105fd24bdfc5acb283c74ad68a4c5e4021",
-           intel: "622c4cc6388151317c14553da9e551e330b5c3eeaea1c57a67fb8e162cd2765c"
+    version "1.100.2"
+    sha256 arm:   "a61a047d30af18451d5e9814237ad78370c0e54efd295a787940e9465b820b0b",
+           intel: "338a27723a2575815526e842fa26486e0eed2357aa09df28efa4de78de7bf55c"
 
     livecheck do
       url "https://releases.raycast.com/releases/latest?build=#{arch}"
@@ -36,6 +36,8 @@ cask "raycast" do
   name "Raycast"
   desc "Control your tools with a few keystrokes"
   homepage "https://raycast.com/"
+
+  no_autobump! because: :bumped_by_upstream
 
   auto_updates true
   depends_on macos: ">= :big_sur"

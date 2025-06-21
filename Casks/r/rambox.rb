@@ -5,8 +5,10 @@ cask "rambox" do
   url "https://github.com/ramboxapp/download/releases/download/v#{version}/Rambox-#{version}-mac.zip",
       verified: "github.com/ramboxapp/download/"
   name "Rambox"
-  desc "Free and Open Source messaging and emailing app"
+  desc "Workspace simplifier - to organize your workspace and boost your productivity"
   homepage "https://rambox.app/"
+
+  no_autobump! because: :requires_manual_review
 
   auto_updates true
   depends_on macos: ">= :catalina"

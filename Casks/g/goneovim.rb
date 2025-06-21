@@ -1,9 +1,9 @@
 cask "goneovim" do
   arch arm: "arm64", intel: "x86_64"
 
-  version "0.6.12"
-  sha256 arm:   "3ee1c9d9c1052d93cd0f118841ecae30104c166153594f1639921a6f3d730bec",
-         intel: "907c830573ba622789e390162e16e5d9d9730125e35f124b904a3fc80dab6fb4"
+  version "0.6.14"
+  sha256 arm:   "2b76a7b40c7c915d40b2ac5520fa68849484ab45e322f654f3f4b032214cff44",
+         intel: "a5a0d15399db2ea6fdfb264e21e2e863777edf4d8bc7793fe22f7795e3ff5a99"
 
   url "https://github.com/akiyosi/goneovim/releases/download/v#{version}/Goneovim-v#{version}-macos-#{arch}.tar.bz2"
   name "Goneovim"

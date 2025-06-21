@@ -1,9 +1,9 @@
 cask "electron" do
   arch arm: "arm64", intel: "x64"
 
-  version "35.2.1"
-  sha256 arm:   "b58cf4bd40582986dfaf4e466788ebc6ea3187c348bf94a67a2c1ea1c1704d1e",
-         intel: "6d2fad32fabf4cf664ffeef6c2f99af8465db5dfb6fc1a752ce5d9363235deff"
+  version "36.5.0"
+  sha256 arm:   "d416d9ed16e4739a73c61260db5dc7f6e42d32f4cb849e4a4f9bfdd5f5b430fa",
+         intel: "d8a283648c39abe0ada9e697502c29a61463ce2f1ca7d83a8fb684cf9f7a9190"
 
   url "https://github.com/electron/electron/releases/download/v#{version}/electron-v#{version}-darwin-#{arch}.zip",
       verified: "github.com/electron/electron/"

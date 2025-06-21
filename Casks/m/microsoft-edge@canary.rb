@@ -1,23 +1,15 @@
 cask "microsoft-edge@canary" do
-  linkid = on_arch_conditional arm: "2093293", intel: "2069147"
+  version "139.0.3394.0,fedc4da3-c24e-4d25-9f6b-df2094fcabee"
+  sha256 "6a83e695fe307f0cab39c697a36e6fb58f0a750f75ff8b992f4e8d1e75c3b8e2"
 
-  on_arm do
-    version "137.0.3283.0,ddd79329-fe0d-4c27-9cdf-f61bb5e7c03d"
-    sha256 "7ab2e0b01a3a8b5ce2519339b02c060f0343b67d273d3132488eea01606a1b23"
-  end
-  on_intel do
-    version "137.0.3283.0,52453bf6-1504-469a-a353-bdc50f3b7de2"
-    sha256 "8fda16810c81d2624715034d673bde3185708c3ac03177b7f1862186219b9794"
-  end
-
-  url "https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/#{version.csv.second}/MicrosoftEdgeCanary-#{version.csv.first}.pkg"
+  url "https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/#{version.csv.second}/MicrosoftEdgeCanary-#{version.csv.first}.dmg"
   name "Microsoft Edge Canary"
   desc "Multi-platform web browser"
   homepage "https://www.microsoft.com/en-us/edge/download/insider?form="
 
   livecheck do
-    url "https://go.microsoft.com/fwlink/?linkid=#{linkid}"
-    regex(%r{/([^/]+)/MicrosoftEdgeCanary[._-]v?(\d+(?:\.\d+)+)\.pkg}i)
+    url "https://go.microsoft.com/fwlink/?linkid=2124603"
+    regex(%r{/([^/]+)/MicrosoftEdgeCanary[._-]v?(\d+(?:\.\d+)+)\.dmg}i)
     strategy :header_match do |headers, regex|
       match = headers["location"]&.match(regex)
       next if match.blank?
@@ -29,38 +21,28 @@ cask "microsoft-edge@canary" do
   auto_updates true
   depends_on macos: ">= :big_sur"
 
-  pkg "MicrosoftEdgeCanary-#{version.csv.first}.pkg",
-      choices: [
-        {
-          "choiceIdentifier" => "com.microsoft.package.Microsoft_AutoUpdate.app", # Office16_all_autoupdate.pkg
-          "choiceAttribute"  => "selected",
-          "attributeSetting" => 0,
-        },
-      ]
+  app "Microsoft Edge Canary.app"
 
-  uninstall launchctl: [
-              "com.microsoft.EdgeUpdater.update-internal.109.0.1518.89.system",
-              "com.microsoft.EdgeUpdater.update.system",
-              "com.microsoft.EdgeUpdater.wake.system",
-            ],
-            pkgutil:   "com.microsoft.edgemac.Canary"
+  uninstall launchctl: "com.microsoft.EdgeUpdater.wake"
 
-  zap delete: "/Library/Application Support/Microsoft/EdgeUpdater",
-      trash:  [
+  zap trash: [
         "~/Library/Application Scripts/com.microsoft.edgemac.wdgExtension.Canary",
         "~/Library/Application Support/Microsoft Edge Canary",
+        "~/Library/Application Support/Microsoft/EdgeUpdater",
         "~/Library/Caches/com.microsoft.edgemac.Canary",
+        "~/Library/Caches/com.microsoft.EdgeUpdater",
         "~/Library/Caches/Microsoft Edge Canary",
         "~/Library/Containers/com.microsoft.edgemac.wdgExtension.Canary",
         "~/Library/HTTPStorages/com.microsoft.edgemac.Canary",
+        "~/Library/HTTPStorages/com.microsoft.EdgeUpdater",
         "~/Library/LaunchAgents/com.microsoft.EdgeUpdater.*.plist",
         "~/Library/Microsoft/MicrosoftSoftwareUpdate/Actives/com.microsoft.edgemac.Canary",
         "~/Library/Preferences/com.microsoft.edgemac.Canary.plist",
         "~/Library/Saved Application State/com.microsoft.edgemac.Canary.savedState",
         "~/Library/WebKit/com.microsoft.edgemac.Canary",
       ],
-      rmdir:  [
-        "/Library/Application Support/Microsoft",
+      rmdir: [
+        "~/Library/Application Support/Microsoft",
         "~/Library/Microsoft",
       ]
 end
